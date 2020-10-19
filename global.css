@@ -1,0 +1,24 @@
+html, body {
+    margin: 0;
+    font-family:Helvetica, sans-serif;
+    font-size: 24pt;
+  }
+
+.axis line {
+  stroke-width:1px;
+  stroke: #ccc;
+  stroke-dasharray: 2px 2px;
+}
+
+.axis text {
+  font-size: 12px;
+  fill: #777;
+}
+
+.axis path {
+  display: none;
+}
+.wifiGroup text {
+  fill: #aaa;
+  font-size: 11px;
+}
