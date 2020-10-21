@@ -1,26 +1,51 @@
 //Download Airtable Data
 var data1 = [];
+var data2 = [];
 
 var Airtable = require('airtable');
-var base = new Airtable({apiKey: 'keyJvXFNWQIMm9EA2'}).base('appmrMX9i7Il9Ewtq');
-  base('NTA').select({
-    view: "Grid view",
-  }).eachPage(function page(records, fetchNextPage) {
-      records.forEach(function(record) {
-        data1.push({name: record.fields.Name, percent: (record.fields.Percent*100), count: record.fields.Count, borough: record.fields.Borocode});
-      });
- 
-      fetchNextPage();
-  }, function done(err) {
-    if (err) { console.error(err); return; 
-  }
-  ready();
-});
 
+function findData() {
+
+  var base = new Airtable({apiKey: 'keyJvXFNWQIMm9EA2'}).base('appmrMX9i7Il9Ewtq');
+  base('NTA').select({
+      view: "Grid view",
+    }).eachPage(function page(records, fetchNextPage) {
+        records.forEach(function(record) {
+          data1.push({name: record.fields.Name, percent: (record.fields.Percent*100), count: record.fields.Count, borough: record.fields.Borocode, id: record.fields.recordIDs });
+        });
+
+        fetchNextPage();
+    }, 
+    function done(err) {
+      if (err) { console.error(err); return; 
+    }
+      ready();
+  });}
+
+findData();
+
+function findData2() {
+
+  var base = new Airtable({apiKey: 'keyJvXFNWQIMm9EA2'}).base('appmrMX9i7Il9Ewtq');
+    base('Imported table').select({
+      view: "Grid view",
+    }).eachPage(function page(records, fetchNextPage) {
+        records.forEach(function(record) {
+          data2.push({name1: record.fields.recordID, location:record.fields.Location });
+        });
+
+        fetchNextPage();
+    }, function done(err) {
+      if (err) { console.error(err); 
+        return; 
+    }
+  });
+
+}
+//button data switch
 function dataSwap(datasetGroup) {  
   d3.selectAll('circle')
     .transition()
-    // .ease(d3.easeElastic)
     .duration(transitionTime)
         .style("visibility", function(d) {
           if (d.borough == datasetGroup) {
@@ -41,11 +66,6 @@ function dataSwap(datasetGroup) {
   d3.select('#titleText')
     .text('Wifi ' + datasetGroup);
   };
-  
-  
-
-// tooltip mouseover event handler
-
 
 const margin = {top: 20, right: 30, bottom: 20, left: 30};
 const outerWidth = 700;
@@ -85,12 +105,9 @@ const yAxisGroup = svg.append("g")
   .range([ "#440154ff", "#21908dff", "#fde725ff", "red", "blue"])
 
 function ready() {
- 
-  
-    const startData = data1
+    const startData =  data1
     const boroughList = d3.set(data1.map(function(d) { return d.borough })).values();
-
-    console.log(startData)
+    const neighborhoodList = d3.set(data1.map(function(d) { return d.name })).values();
    
     d3.select('#buttonsDiv')
       .selectAll('button')
@@ -148,11 +165,19 @@ function ready() {
         .text('Wifi Access in NYC')
         
   }
-  
+
   var tooltip = d3.select("#my_dataviz").append("div")
   .attr("class", "tooltip")
   .style("opacity", 0);
-  var tipMouseover = function(d) {  
+  var tipMouseover = function(d) {    
+    // for (i = 0; i < data2.length; i++) {
+    //   if (data2.name[i]===d.id[i]){
+    //     console.log(data2.name[i])
+    //   }
+    // }
+    const result = data2.filter(word => data2.name === d.id);
+
+console.log(result);
     var html  = "<span style='color:" +  color(d.borough)  + ";'>" + d.name + "</span><br/>";
     tooltip.html(html)
         .style("left", (d3.event.pageX + 15) + "px")
@@ -168,4 +193,3 @@ function ready() {
         .duration(transitionTime/2)
         .style("opacity", 0);
   };
-  
