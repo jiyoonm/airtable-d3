@@ -16,9 +16,17 @@ html, body {
 }
 
 .axis path {
-  display: none;
+  /* display: none; */
 }
 .wifiGroup text {
   fill: #aaa;
   font-size: 11px;
+}
+.tooltip {
+  position: absolute;
+  font-size: 15px;
+  width:  auto;
+  height: auto;
+  pointer-events: none;
+  background-color: white;
 }
