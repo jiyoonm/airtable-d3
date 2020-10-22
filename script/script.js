@@ -156,7 +156,7 @@ function ready(data1, data2) {
         .attr('r', radius)
         .style("fill", function (d) { return color(d.borough) } )
         .on("mouseover", tipMouseover)
-        .on("click", tip)
+        .on("click", dotClick)
         .on("mouseout", tipMouseout)
     //Data title
    
@@ -173,13 +173,11 @@ function ready(data1, data2) {
  
     svg.append("text")
     .attr("class", "x label")
-  
     .style("text-anchor", "middle")
     .attr("x", innerWidth/2)
     .style('font-size','23px')
     .attr("y", innerHeight + 40)
     .style("color","#6e6e6e")
-
     .text("% of Households without Internet");
         
   }
