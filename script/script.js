@@ -87,8 +87,8 @@ const yAxisGroup = svg.append("g")
   .attr("class", "y axis") 
   .call(yAxis);
 var color = d3.scaleOrdinal()
-  .domain(["Manhattan", "Bronx", "Brooklyn", "Queens","Staten Island" ])
-  .range([ "#EFB605", "#E01A25", "#991C71","#2074A0",  "#7EB852"])
+  .domain(["Brooklyn", "Bronx", "Queens","Staten Island","Manhattan" ])
+  .range(["#991C71", "#E01A25", "#2074A0",  "#7EB852","#EFB605"])
 
 function ready(data1) {
     const startData =  data1

@@ -16,8 +16,15 @@ html, body {
   margin-top: 10px;
     text-align: center;
 }
-#buttonsDiv button:hover{
-  background-color: white;
+
+.source{
+  margin:10px auto;
+  text-align: center;
+        font-size: 14px;
+  }
+
+.source a:hover{
+  color:lightgray;
 }
 
 #table1{
@@ -26,7 +33,6 @@ html, body {
   text-align: center;
 }
 #dissapear{
-  /* display:none; */
   margin-left:auto; 
   margin-right:auto;
   font-size: 30px;
@@ -36,7 +42,7 @@ html, body {
   text-align: center;
 }
 table {
-    font-size: 25px;
+  font-size: 25px;
 }
 .center{
   text-align: center;
@@ -135,11 +141,15 @@ h5{
   font-weight: normal;
 }
 
+
+
+a, a:visited{
+  color: #383874;
+}
 /* navbar */
 
 .topnav{ 
   height: 100%;
-  /* background-color: white; */
   box-shadow: 10px 10px 39px 0px rgba(0,0,0,0.12);
 }
 
