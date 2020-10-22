@@ -71,8 +71,8 @@ function dataSwap(datasetGroup) {
   };
 
 const margin = {top: 20, right: 30, bottom: 50, left: 70};
-const outerWidth = 700;
-const outerHeight = 600;
+const outerWidth = 910;
+const outerHeight = 780;
 const innerWidth = outerWidth - margin.left - margin.right
 const innerHeight = outerHeight - margin.top - margin.bottom
 const radius=6;

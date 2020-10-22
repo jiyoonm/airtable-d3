@@ -12,6 +12,10 @@ html, body {
   stroke: #ccc;
   stroke-dasharray: 2px 2px;
 }
+#buttonsDiv{
+  margin-top: 10px;
+    text-align: center;
+}
 #table1{
   display:none;
   margin-left:auto; 
@@ -22,15 +26,14 @@ html, body {
   display:none;
   margin-left:auto; 
   margin-right:auto;
-  /* color: #383874; */
-  font-size: 25px;
+  font-size: 30px;
   padding-top: 10px;
   padding-bottom: 25px;
   line-height: 31px;
   text-align: center;
 }
 table {
-  font-size: 18px;
+  font-size: 25px;
 }
 .center{
   text-align: center;
@@ -247,7 +250,7 @@ button:active {
 	position: absolute;
 	box-sizing: border-box;
 	background-color: white;
-	padding: 40px;
+	padding: 30px;
 	width: 500px;
 	text-align: center;
 	transition: transform 0.4s;
@@ -258,13 +261,10 @@ button:active {
   transition: transform .6s; /* Animation */
 }
 
+
+
 .item:hover{
     transform: scale(1.03)
-}
-
-.info .item img {
-  width: 200px;
-  height: 100px;
 }
 
 #i1:checked ~ .info label[for="i1"] {
