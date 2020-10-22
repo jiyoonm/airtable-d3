@@ -72,8 +72,8 @@ td.row-header {
 }
 
 .axis text {
-  font-size: 12px;
-  fill: black;
+  font-size: 17px;
+ color: black;
 }
 
 .axis path {
@@ -81,7 +81,7 @@ td.row-header {
   
 }
 .wifiGroup text {
-  fill: #aaa;
+  color: #aaa;
   font-size: 11px;
 }
 
@@ -91,6 +91,8 @@ td.row-header {
   font-size: 15px;
   width:  auto;
   height: auto;
+  padding:10px;
+  border-radius: 20px;
   pointer-events: none;
   background-color: white;
 }

@@ -174,7 +174,7 @@ function ready(data1, data2) {
     .attr("x",0 - (innerHeight / 2))
     .attr("dy", "1em")
     .style("color",'#6e6e6e')
-    .style('font-size','17px')
+    .style('font-size','23px')
     .style("text-anchor", "middle")
     .style("color","#6e6e6e")
     .text("# of Free Wi-Fi Hotspot Locations"); 
@@ -184,7 +184,7 @@ function ready(data1, data2) {
   
     .style("text-anchor", "middle")
     .attr("x", innerWidth/2)
-    .style('font-size','17px')
+    .style('font-size','23px')
     .attr("y", innerHeight + 40)
     .style("color","#6e6e6e")
 
@@ -197,9 +197,7 @@ function ready(data1, data2) {
   .style("opacity", 0);
 
   var tipMouseover = function(d) {    
-
-
-    var html  = "<span style='color:" +  color(d.borough)  + ";'>" + d.name + "</span><br/>";
+    var html  = "<span style='color:" +  color(d.borough)  + ";'>" + d.name + "</span><br> Hotspot Locations: "+"<b>" + d.count + "</b><br>Households Without Internet: <b>"+ Math.floor(d.percent)+"%";
     tooltip.html(html)
         .style("left", (d3.event.pageX + 15) + "px")
         .style("top", (d3.event.pageY - 28) + "px")
