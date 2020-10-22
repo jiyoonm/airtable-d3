@@ -43,7 +43,6 @@ table {
 #my_dataviz{
   display: block;
   margin: auto;
-
 }
 svg{
   display: block;
@@ -53,7 +52,6 @@ td {
   padding: 5px;
   border-bottom: 1px solid  #ccc;;
 }
-
 td.update { 
   color: #383874;
 }
@@ -84,7 +82,6 @@ td.row-header {
   color: #aaa;
   font-size: 11px;
 }
-
 
 .tooltip {
   position: absolute;

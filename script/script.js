@@ -4,9 +4,7 @@ var data2 = [];
 
 var Airtable = require('airtable');
 
-
 function findData() {
-
   var base = new Airtable({apiKey: 'keyJvXFNWQIMm9EA2'}).base('appmrMX9i7Il9Ewtq');
   base('NTA').select({
       view: "Grid view",
@@ -20,14 +18,10 @@ function findData() {
     function done(err) {
       if (err) { console.error(err); return; 
     }
-
+    findData2();
   });}
-
-
-  findData();
-
+findData();
 function findData2() {
-
   var base = new Airtable({apiKey: 'keyJvXFNWQIMm9EA2'}).base('appmrMX9i7Il9Ewtq');
     base('Imported table').select({
       view: "Grid view",
@@ -45,7 +39,6 @@ function findData2() {
   });
 
 }
-findData2();
 //button data switch
 function dataSwap(datasetGroup) {  
   d3.selectAll('circle')
@@ -67,7 +60,6 @@ function dataSwap(datasetGroup) {
               return 0
               }
             ;})
-
   };
 
 const margin = {top: 20, right: 30, bottom: 50, left: 70};
@@ -213,24 +205,16 @@ function ready(data1, data2) {
         .style("opacity", 0);
    
   };
-
   var locations=[];
-
-
-  var tip = function(d) {
-
+  var dotClick = function(d) {
     locations=[];
-
-    // var 
     for (i = 0; i < data2.length; i++) {
       if (d.name===data2[i].n){
         locations.push({name1: data2[i].location, name2:data2[i].name1 });
-  }
-  
+      }
     }
     console.log( locations)
     update(locations, ['name1','name2']);
-
     var x = document.getElementById("table1");
     var y = document.getElementById("dissapear");
         if (x.style.display === "none" && y.style.display === "none" ) {
@@ -242,18 +226,11 @@ function ready(data1, data2) {
       y.style.display = "none";
     }
   }
-  
 var table = d3.select('table')
-
 var ident = function(d) { return d.value; };
 var update = function(locations, columns) {
 
-
   var rows = table.selectAll('tr').data(locations)
-   //////////////////////////////////////////
-  // ROW UPDATE SELECTION
-
-  // Update cells in existing rows.
 
   var cells = rows.selectAll("td")
   .data(function(row) {
@@ -284,16 +261,14 @@ var update = function(locations, columns) {
     .style('opacity', 0.0)
     .remove();
 
-  //////////////////////////////////////////
-  // ROW ENTER SELECTION
   // Add new rows
   var cells_in_new_rows = rows.enter().append('tr')
-                              .selectAll('td')
-                              .data(function(row) {
-                                return columns.map(function(column) {
-                                    return {column: column, value: row[column]};
-                                });
-                            });
+    .selectAll('td')
+    .data(function(row) {
+      return columns.map(function(column) {
+          return {column: column, value: row[column]};
+      });
+  });
 
   cells_in_new_rows.enter().append('td')
     .style('opacity', 0.0)
@@ -305,8 +280,6 @@ var update = function(locations, columns) {
 
   cells_in_new_rows.text(ident);
 
-  /////////////////////////////////////////
-  // ROW EXIT SELECTION
   // Remove old rows
   rows.exit()
     .attr('class', 'exit')
@@ -318,6 +291,4 @@ var update = function(locations, columns) {
     .remove();
 
   table.selectAll('tr').select('td').classed('row-header', true);
-
-
 };
