@@ -16,13 +16,17 @@ html, body {
   margin-top: 10px;
     text-align: center;
 }
+#buttonsDiv button:hover{
+  background-color: white;
+}
+
 #table1{
   margin-left:auto; 
   margin-right:auto;
   text-align: center;
 }
 #dissapear{
-  display:none;
+  /* display:none; */
   margin-left:auto; 
   margin-right:auto;
   font-size: 30px;
@@ -32,7 +36,7 @@ html, body {
   text-align: center;
 }
 table {
-  font-size: 25px;
+    font-size: 25px;
 }
 .center{
   text-align: center;

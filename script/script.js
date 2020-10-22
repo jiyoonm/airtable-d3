@@ -41,26 +41,17 @@ function findData2() {
 }
 //button data switch
 function dataSwap(datasetGroup) {  
-  d3.selectAll('circle')
-    .transition()
-    .duration(transitionTime)
-        .style("visibility", function(d) {
-          if (d.borough == datasetGroup) {
-            return "visible"
-          }
-          else{
-            return "hidden"
-            }
-          ;})
-          .style("opacity", function(d) {
-            if (d.borough == datasetGroup) {
-              return 1
-            }
-            else{
-              return 0
-              }
-            ;})
-  };
+  var toggle = d3.select('.wifiCircle').style('visibility') === "visible" ? "hidden" : "visible";
+  d3.selectAll('.wifiCircle')
+    .style("visibility", function(d) {
+      if (d.borough == datasetGroup) {
+        return "visible"
+      }
+      if (d.borough !== datasetGroup){
+        return toggle
+        }
+      ;})
+};
 
 const margin = {top: 20, right: 30, bottom: 50, left: 70};
 const outerWidth = 910;
@@ -99,10 +90,9 @@ var color = d3.scaleOrdinal()
   .domain(["Manhattan", "Bronx", "Brooklyn", "Queens","Staten Island" ])
   .range([ "#EFB605", "#E01A25", "#991C71","#2074A0",  "#7EB852"])
 
-function ready(data1, data2) {
+function ready(data1) {
     const startData =  data1
     const boroughList = d3.set(data1.map(function(d) { return d.borough })).values();
-    const neighborhoodList = d3.set(data2.map(function(D) { return D.n })).values();
  
     d3.select('#buttonsDiv')
       .selectAll('button')
@@ -111,10 +101,10 @@ function ready(data1, data2) {
       .attr('class','button')
       .style("background-color",function (d) { return color(d) }  )
       .style('opacity', .9)
-    .style('color','white')
+      .style('color','white')
       .text(function(d) { return d; })
       .on('click', function(d) {
-         dataSwap(d,data1) 
+         dataSwap(d) 
        });
 
     xScale.domain([0, d3.max(startData, function(d) { return d.percent })+6])
@@ -136,7 +126,7 @@ function ready(data1, data2) {
             .style('opacity', 1);
             d3.selectAll('circle')
             .style('opacity', 0.5)
-            
+           
          })
       .on('mouseout', function(d) {
          d3.select(this)
@@ -158,8 +148,8 @@ function ready(data1, data2) {
         .on("mouseover", tipMouseover)
         .on("click", dotClick)
         .on("mouseout", tipMouseout)
-    //Data title
-   
+
+    //axis titles
     svg.append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 0 - margin.left)
