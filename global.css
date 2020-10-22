@@ -12,6 +12,61 @@ html, body {
   stroke: #ccc;
   stroke-dasharray: 2px 2px;
 }
+#table1{
+  display:none;
+  margin-left:auto; 
+  margin-right:auto;
+  text-align: center;
+}
+#dissapear{
+  display:none;
+  margin-left:auto; 
+  margin-right:auto;
+  /* color: #383874; */
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 25px;
+  line-height: 31px;
+  text-align: center;
+}
+table {
+  font-size: 18px;
+}
+.center{
+  text-align: center;
+  margin-left:auto; 
+  margin-right:auto;
+}
+#my_dataviz{
+  display: block;
+  margin: auto;
+
+}
+svg{
+  display: block;
+  margin: auto;
+}
+td {
+  padding: 5px;
+  border-bottom: 1px solid  #ccc;;
+}
+
+td.update { 
+  color: #383874;
+}
+
+td.enter {
+  color:#383874;
+}
+
+td.exit, tr.exit td {
+  color: red;
+}
+
+td.row-header {
+  border-right: 1px solid  #ccc;;
+  font-weight: bold;
+}
 
 .axis text {
   font-size: 12px;
@@ -26,6 +81,7 @@ html, body {
   fill: #aaa;
   font-size: 11px;
 }
+
 
 .tooltip {
   position: absolute;
